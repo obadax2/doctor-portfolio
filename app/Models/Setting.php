@@ -13,5 +13,36 @@ class Setting extends Model
         'whatsapp',
         'facebook',
         'instagram',
+        'clinic_name',
+        'tagline',
+        'description',
+        'emergency',
+        'stats',
+        'hours',
+        'features',
+        'about_story',
+        'about_established',
+        'about_mission',
+        'about_vision',
+        'about_values',
+        'hero_title',
+        'hero_subtitle',
+        'clinic_image',
+        'hero_image',
+        'patient_images',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'stats' => 'array',
+            'hours' => 'array',
+            'features' => 'array',
+            'about_story' => 'array',
+            'about_mission' => 'array',
+            'about_vision' => 'array',
+            'about_values' => 'array',
+            'patient_images' => 'array',
+        ];
+    }
 }

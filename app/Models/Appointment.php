@@ -4,21 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Testimonial extends Model
+class Appointment extends Model
 {
     protected $fillable = [
         'name',
-        'message',
-        'rating',
-        'patient_since',
-        'image',
-        'is_active',
+        'phone',
+        'email',
+        'reason',
+        'type',
+        'status',
+        'is_read',
     ];
 
     protected function casts(): array
     {
         return [
-            'is_active' => 'boolean',
+            'is_read' => 'boolean',
         ];
     }
 }
