@@ -1,0 +1,11 @@
+node_modules
+.git
+.env
+.vite
+public/hot
+public/storage
+storage/app/public
+storage/debugbar
+storage/framework/cache/data
+storage/logs
+vendor

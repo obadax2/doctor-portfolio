@@ -16,8 +16,9 @@ class ServiceController extends Controller
         );
     }
 
-    public function show(Service $service)
+    public function show(string $slug)
     {
+        $service = Service::where('slug', $slug)->firstOrFail();
         return new ServiceResource($service);
     }
 
