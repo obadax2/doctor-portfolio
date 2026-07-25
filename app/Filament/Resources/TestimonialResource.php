@@ -26,10 +26,12 @@ class TestimonialResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->translatable(),
                         Forms\Components\Textarea::make('message')
                             ->required()
-                            ->rows(4),
+                            ->rows(4)
+                            ->translatable(),
                         Forms\Components\Select::make('rating')
                             ->options([1 => '1 Star', 2 => '2 Stars', 3 => '3 Stars', 4 => '4 Stars', 5 => '5 Stars'])
                             ->default(5),

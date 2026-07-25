@@ -29,7 +29,8 @@ class GalleryResource extends Resource
                             ->directory('gallery')
                             ->required(),
                         Forms\Components\TextInput::make('caption')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->translatable(),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Active')
                             ->default(true),

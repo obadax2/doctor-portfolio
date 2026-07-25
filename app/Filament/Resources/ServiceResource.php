@@ -26,7 +26,8 @@ class ServiceResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->translatable(),
                         Forms\Components\Select::make('category')
                             ->options([
                                 'Diagnosis' => 'Diagnosis',
@@ -34,17 +35,20 @@ class ServiceResource extends Resource
                                 'Specialized Care' => 'Specialized Care',
                                 'Preventative' => 'Preventative',
                             ])
-                            ->required(),
+                            ->required()
+                            ->translatable(),
                         Forms\Components\TextInput::make('icon')
                             ->label('Material Icon Name')
                             ->helperText('e.g. monitor_heart, neurology, stethoscope')
                             ->maxLength(255),
                         Forms\Components\Textarea::make('description')
                             ->rows(3)
-                            ->required(),
+                            ->required()
+                            ->translatable(),
                         Forms\Components\Textarea::make('long_description')
                             ->label('Full Description')
-                            ->rows(5),
+                            ->rows(5)
+                            ->translatable(),
                         Forms\Components\FileUpload::make('image')
                             ->image()
                             ->directory('services'),
@@ -55,7 +59,8 @@ class ServiceResource extends Resource
                             ])
                             ->label('Key Highlights')
                             ->defaultItems(0)
-                            ->collapsible(),
+                            ->collapsible()
+                            ->translatable(),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Visibility')

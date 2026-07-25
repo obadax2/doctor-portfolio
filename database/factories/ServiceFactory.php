@@ -15,17 +15,17 @@ class ServiceFactory extends Factory
         $icons = ['monitor_heart', 'neurology', 'orthopedics', 'stethoscope', 'psychology', 'pediatrics'];
 
         return [
-            'title' => $this->faker->words(3, true),
-            'description' => $this->faker->sentence(15),
-            'long_description' => $this->faker->paragraphs(3, true),
+            'title' => ['en' => $this->faker->words(3, true)],
+            'description' => ['en' => $this->faker->sentence(15)],
+            'long_description' => ['en' => $this->faker->paragraphs(3, true)],
             'icon' => $this->faker->randomElement($icons),
-            'category' => $this->faker->randomElement($categories),
-            'highlights' => [
+            'category' => ['en' => $this->faker->randomElement($categories)],
+            'highlights' => ['en' => [
                 $this->faker->sentence(8),
                 $this->faker->sentence(8),
                 $this->faker->sentence(8),
                 $this->faker->sentence(8),
-            ],
+            ]],
             'is_active' => true,
             'sort_order' => $this->faker->numberBetween(1, 20),
         ];

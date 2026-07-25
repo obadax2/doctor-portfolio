@@ -3,9 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Setting extends Model
 {
+    use HasTranslations;
+
+    public $translatable = [
+        'clinic_name',
+        'tagline',
+        'description',
+        'address',
+        'stats',
+        'hours',
+        'features',
+        'about_story',
+        'about_mission',
+        'about_vision',
+        'about_values',
+        'hero_title',
+        'hero_subtitle',
+        'page_content',
+    ];
+
     protected $fillable = [
         'phone',
         'email',
@@ -30,18 +50,12 @@ class Setting extends Model
         'clinic_image',
         'hero_image',
         'patient_images',
+        'page_content',
     ];
 
     protected function casts(): array
     {
         return [
-            'stats' => 'array',
-            'hours' => 'array',
-            'features' => 'array',
-            'about_story' => 'array',
-            'about_mission' => 'array',
-            'about_vision' => 'array',
-            'about_values' => 'array',
             'patient_images' => 'array',
         ];
     }

@@ -13,7 +13,7 @@ class GalleryFactory extends Factory
     {
         return [
             'image' => 'gallery/' . $this->faker->uuid() . '.jpg',
-            'caption' => $this->faker->sentence(5),
+            'caption' => ['en' => $this->faker->sentence(5)],
             'is_active' => true,
             'sort_order' => $this->faker->numberBetween(1, 20),
         ];

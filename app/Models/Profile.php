@@ -3,9 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Profile extends Model
 {
+    use HasTranslations;
+
+    public $translatable = [
+        'name',
+        'title',
+        'bio',
+        'qualifications',
+        'experience',
+        'education',
+        'credentials',
+        'expertise',
+        'expertise_tags',
+        'stats',
+    ];
+
     protected $fillable = [
         'name',
         'title',
@@ -22,14 +38,4 @@ class Profile extends Model
         'phone',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'education' => 'array',
-            'credentials' => 'array',
-            'expertise' => 'array',
-            'expertise_tags' => 'array',
-            'stats' => 'array',
-        ];
-    }
 }

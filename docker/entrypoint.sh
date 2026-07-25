@@ -15,8 +15,13 @@ if [ -z "$APP_KEY" ]; then
   php artisan key:generate --force
 fi
 
-php artisan migrate --force
+# Fix storage permissions (bind mount overrides Dockerfile's chown)
+chown -R www-data:www-data storage bootstrap/cache
+
+# For dev/testing: fresh migrate + seed each time (wipes + re-creates all data)
+php artisan migrate:fresh --seed --force
 php artisan storage:link 2>/dev/null || true
+php artisan filament:assets --ansi 2>/dev/null || true
 php artisan config:cache
 php artisan route:cache 2>/dev/null || true
 

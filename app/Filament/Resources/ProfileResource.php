@@ -28,11 +28,14 @@ class ProfileResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->translatable(),
                         Forms\Components\TextInput::make('title')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->translatable(),
                         Forms\Components\Textarea::make('bio')
-                            ->rows(4),
+                            ->rows(4)
+                            ->translatable(),
                         Forms\Components\FileUpload::make('image')
                             ->image()
                             ->directory('profile'),
@@ -46,9 +49,11 @@ class ProfileResource extends Resource
                 Forms\Components\Section::make('Qualifications')
                     ->schema([
                         Forms\Components\Textarea::make('qualifications')
-                            ->rows(3),
+                            ->rows(3)
+                            ->translatable(),
                         Forms\Components\Textarea::make('experience')
-                            ->rows(3),
+                            ->rows(3)
+                            ->translatable(),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Education')
@@ -63,7 +68,8 @@ class ProfileResource extends Resource
                                     ->maxLength(255),
                             ])
                             ->defaultItems(0)
-                            ->collapsible(),
+                            ->collapsible()
+                            ->translatable(),
                     ]),
 
                 Forms\Components\Section::make('Credentials')
@@ -78,7 +84,8 @@ class ProfileResource extends Resource
                                     ->rows(2),
                             ])
                             ->defaultItems(0)
-                            ->collapsible(),
+                            ->collapsible()
+                            ->translatable(),
                     ]),
 
                 Forms\Components\Section::make('Expertise')
@@ -91,8 +98,10 @@ class ProfileResource extends Resource
                                     ->rows(2),
                             ])
                             ->defaultItems(0)
-                            ->collapsible(),
-                        Forms\Components\TagsInput::make('expertise_tags'),
+                            ->collapsible()
+                            ->translatable(),
+                        Forms\Components\TagsInput::make('expertise_tags')
+                            ->translatable(),
                     ]),
 
                 Forms\Components\Section::make('Stats')
@@ -105,7 +114,8 @@ class ProfileResource extends Resource
                                     ->maxLength(255),
                             ])
                             ->defaultItems(3)
-                            ->collapsible(),
+                            ->collapsible()
+                            ->translatable(),
                     ]),
             ]);
     }

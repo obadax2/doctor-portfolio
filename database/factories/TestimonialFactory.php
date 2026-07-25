@@ -12,8 +12,8 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'message' => $this->faker->paragraph(3),
+            'name' => ['en' => $this->faker->name()],
+            'message' => ['en' => $this->faker->paragraph(3)],
             'rating' => $this->faker->numberBetween(4, 5),
             'patient_since' => (string) $this->faker->year(),
             'is_active' => true,

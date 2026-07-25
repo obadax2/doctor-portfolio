@@ -36,6 +36,7 @@ class SettingResource extends JsonResource
             'clinic_image' => $this->clinic_image ? asset('storage/' . $this->clinic_image) : null,
             'hero_image' => $this->hero_image ? asset('storage/' . $this->hero_image) : null,
             'patient_images' => $this->patient_images ?? [],
+            'page_content' => $this->page_content ?? [],
         ];
     }
 }

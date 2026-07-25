@@ -4,9 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\Translatable\HasTranslations;
 
 class Service extends Model
 {
+    use HasTranslations;
+
+    public $translatable = [
+        'title',
+        'description',
+        'long_description',
+        'category',
+        'highlights',
+    ];
+
     protected $fillable = [
         'title',
         'slug',
@@ -23,7 +34,6 @@ class Service extends Model
     protected function casts(): array
     {
         return [
-            'highlights' => 'array',
             'is_active' => 'boolean',
         ];
     }
@@ -34,13 +44,17 @@ class Service extends Model
 
         static::creating(function (self $service) {
             if (empty($service->slug)) {
-                $service->slug = static::generateUniqueSlug($service->title);
+                // Always generate slug from the English title — avoids mutating global locale
+                $englishTitle = $service->getTranslation('title', 'en') ?? '';
+                $service->slug = static::generateUniqueSlug($englishTitle);
             }
         });
 
         static::updating(function (self $service) {
             if ($service->isDirty('title') && !$service->isDirty('slug')) {
-                $service->slug = static::generateUniqueSlug($service->title, $service->id);
+                // Always generate slug from the English title — avoids mutating global locale
+                $englishTitle = $service->getTranslation('title', 'en') ?? '';
+                $service->slug = static::generateUniqueSlug($englishTitle, $service->id);
             }
         });
     }
